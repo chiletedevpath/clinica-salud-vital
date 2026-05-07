@@ -3,6 +3,8 @@ package pe.com.utp.app;
 import pe.com.utp.estructuras.matrices.MatrizHorarios;
 import pe.com.utp.modelo.persona.Paciente;
 import pe.com.utp.servicios.PacienteService;
+import pe.com.utp.estructuras.listas.ListaPacientes;
+import pe.com.utp.modelo.persona.Paciente;
 
 /*
  * Clase principal del sistema.
@@ -49,5 +51,70 @@ public class Main {
         matrizHorarios.mostrarMatriz();
         matrizHorarios.mostrarTotalPorDoctor();
         matrizHorarios.mostrarTotalPorDia();
+
+        System.out.println("\n===== LISTA ENLAZADA =====");
+
+        // Creación de la lista enlazada
+        ListaPacientes listaPacientes = new ListaPacientes();
+
+        // Inserción dinámica de pacientes en la lista
+        listaPacientes.insertarPaciente(new Paciente(
+                "P010",
+                "12345678",
+                "Luis",
+                "Ramirez",
+                "999111222",
+                "luis@correo.com",
+                28,
+                "Fiebre"
+        ));
+
+        listaPacientes.insertarPaciente(new Paciente(
+                "P011",
+                "87654321",
+                "Andrea",
+                "Torres",
+                "988777666",
+                "andrea@correo.com",
+                35,
+                "Migraña"
+        ));
+
+        listaPacientes.insertarPaciente(new Paciente(
+                "P012",
+                "74185296",
+                "Carlos",
+                "Lopez",
+                "955444333",
+                "carlos@correo.com",
+                40,
+                "Diabetes"
+        ));
+
+        /*
+         * Muestra la lista enlazada completa.
+         */
+        listaPacientes.mostrarPacientes();
+
+        System.out.println("\n===== BÚSQUEDA EN LISTA ENLAZADA =====");
+
+        Paciente pacienteLista =
+                listaPacientes.buscarPacientePorDni("87654321");
+
+        if (pacienteLista != null) {
+
+            pacienteLista.mostrarDatos();
+
+        } else {
+
+            System.out.println("Paciente no encontrado.");
+        }
+
+        System.out.println("\n===== ELIMINACIÓN EN LISTA ENLAZADA =====");
+
+        listaPacientes.eliminarPaciente("12345678");
+
+        listaPacientes.mostrarPacientes();
+
     }
 }
